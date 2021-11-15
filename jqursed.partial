@@ -1,0 +1,14 @@
+def _join_if_array(joiner):
+	if type == "array" then join(joiner) else . end;
+def _obj_to_attrs:
+	to_entries
+	| map("\(.key)=\"\(.value|if type == "array" then join(" ") else . end|@html)\"")
+	| join(" ");
+def tag(name):
+	"<\(name)>\(_join_if_array(""))</\(name)>";
+def tag(name; attrs):
+	"<\(name) \(attrs|_obj_to_attrs)>\(_join_if_array(""))</\(name)>";
+def tag_sc(name):
+	"<\(name)>";
+def tag_sc(name; attrs):
+	"<\(name) \(attrs|_obj_to_attrs)>";

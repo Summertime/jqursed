@@ -1,0 +1,117 @@
+#!/usr/bin/env bash
+TAG=(
+	a
+	abbr
+	address
+	article
+	aside
+	audio
+	b
+	bb
+	bdo
+	blockquote
+	body
+	button
+	canvas
+	caption
+	cite
+	code
+	colgroup
+	datalist
+	dd
+	del
+	details
+	dfn
+	dialog
+	div
+	dl
+	dt
+	em
+	fieldset
+	figure
+	footer
+	form
+	h1
+	h2
+	h3
+	h4
+	h5
+	h6
+	head
+	header
+	html
+	i
+	iframe
+	ins
+	kbd
+	label_
+	legend
+	li
+	map
+	mark
+	menu
+	meter
+	nav
+	noscript
+	object
+	ol
+	optgroup
+	option
+	output
+	p
+	pre
+	progress
+	q
+	rp
+	rt
+	ruby
+	samp
+	script
+	section
+	select
+	small
+	span
+	strong
+	style
+	sub
+	sup
+	table
+	tbody
+	td
+	textarea
+	tfoot
+	th
+	thead
+	time
+	title
+	tr
+	ul
+	var
+	video
+)
+TAG_SC=(
+	area
+	base
+	br
+	col
+	command
+	embed
+	hr
+	img
+	input
+	link
+	meta
+	param
+	source
+)
+{
+	cat jqursed.partial
+	for T in "${TAG[@]}"; do
+		printf 'def %s:\n\ttag("%s");\n' "$T" "$T"
+		printf 'def %s(attrs):\n\ttag("%s"; attrs);\n' "$T" "$T"
+	done
+	for T in "${TAG_SC[@]}"; do
+		printf 'def %s:\n\ttag_sc("%s");\n' "$T" "$T"
+		printf 'def %s(attrs):\n\ttag_sc("%s"; attrs);\n' "$T" "$T"
+	done
+} >| jqursed.jq
