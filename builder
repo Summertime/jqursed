@@ -105,7 +105,7 @@ TAG_SC=(
 	source
 )
 {
-	cat jqursed.partial
+	cat jqursed.{module,partial}
 	for T in "${TAG[@]}"; do
 		printf 'def %s:\n\ttag("%s");\n' "$T" "$T"
 		printf 'def %s(attrs):\n\ttag("%s"; attrs);\n' "$T" "$T"
